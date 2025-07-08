@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "949357791683",
+    "project_id": "fire-feed-app-2ee1a",
+    "storage_bucket": "fire-feed-app-2ee1a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949357791683:android:1fd3ab6043e9d763735576",
+        "android_client_info": {
+          "package_name": "com.example.fire_feed_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByNCiGElHmH3ficoPvzOl_ZhRNBRdbuBY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
