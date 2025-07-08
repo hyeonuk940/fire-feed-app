@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fire_feed_app/screen/home_screen.dart'; // HomeScreen import
 
 class LoginScreen extends StatelessWidget {
@@ -9,27 +10,34 @@ class LoginScreen extends StatelessWidget {
     final TextEditingController idController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
 
-    void _tryLogin() {
+    void _tryLogin() async {
       final id = idController.text.trim();
       final pw = passwordController.text.trim();
 
-      if (id == 'abcd' && pw == '1234') {
+      try {
+        final credential = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: id, password: pw);
+
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const HomeScreen()),
         );
-      } else {
+      } on FirebaseAuthException catch (e) {
+        String message = '로그인에 실패했습니다.';
+        if (e.code == 'user-not-found') {
+          message = '해당 이메일을 가진 사용자가 없습니다.';
+        } else if (e.code == 'wrong-password') {
+          message = '비밀번호가 틀렸습니다.';
+        }
+
         showDialog(
           context: context,
           builder: (context) {
             return AlertDialog(
               title: const Text('로그인 실패'),
-              content: const Text('아이디와 패스워드가 일치하지 않습니다.'),
+              content: Text(message),
               actions: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop(); // 팝업 닫기
-                  },
+                TextButton(onPressed: () => Navigator.of(context).pop(),
                   child: const Text('확인'),
                 ),
               ],
@@ -38,6 +46,7 @@ class LoginScreen extends StatelessWidget {
         );
       }
     }
+
 
     return Scaffold(
       appBar: AppBar(title: const Text('로그인')),
@@ -61,10 +70,8 @@ class LoginScreen extends StatelessWidget {
               child: const Text('로그인'),
             ),
             TextButton(
-              onPressed: () {
-                print('회원가입 버튼 클릭됨');
-              },
-              child: const Text('회원가입'),
+              onPressed: () => Navigator.of(context).pop(),
+                child: const Text('확인'),
             ),
           ],
         ),
