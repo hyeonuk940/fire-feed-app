@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fire_feed_app/screen/home_screen.dart'; // HomeScreen import
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -27,7 +28,10 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(height: 24),
             ElevatedButton(
               onPressed: () {
-                print('아이디: ${idController.text}, 비밀번호: ${passwordController.text}');
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                );
               },
               child: const Text('로그인'),
             ),

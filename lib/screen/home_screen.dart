@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fire_feed_app/screen/login_screen.dart';
-import 'package:fire_feed_app/screen/diary_feed_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -41,34 +40,11 @@ class HomeScreen extends StatelessWidget {
                     subtitle: Text(item['subtitle']!),
                     leading: const Icon(Icons.local_fire_department, color: Colors.red),
                     onTap: () {
-                      if (index == 0){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (_) => const DiaryFeedScreen()),
-                        );
-                      }
-                      // 상세 화면으로 이동 예정
+                      // 추후 상세 페이지 연결 가능
                     },
                   ),
                 );
               },
-            ),
-          ),
-          const Divider(height: 1),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: SizedBox(
-              width: double.infinity,
-              child: ElevatedButton.icon(
-                icon: const Icon(Icons.login),
-                label: const Text('로그인'),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const LoginScreen()),
-                  );
-                },
-              ),
             ),
           ),
         ],
