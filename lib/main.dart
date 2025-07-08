@@ -1,5 +1,5 @@
-import 'package:fire_feed_app/diary_feed_screen.dart';
-import 'package:fire_feed_app/home_screen.dart';
+import 'package:fire_feed_app/screen/diary_feed_screen.dart';
+import 'package:fire_feed_app/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

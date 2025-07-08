@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fire_feed_app/login_screen.dart';
+import 'package:fire_feed_app/screen/login_screen.dart';
+import 'package:fire_feed_app/screen/diary_feed_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -40,6 +41,12 @@ class HomeScreen extends StatelessWidget {
                     subtitle: Text(item['subtitle']!),
                     leading: const Icon(Icons.local_fire_department, color: Colors.red),
                     onTap: () {
+                      if (index == 0){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => const DiaryFeedScreen()),
+                        );
+                      }
                       // 상세 화면으로 이동 예정
                     },
                   ),
