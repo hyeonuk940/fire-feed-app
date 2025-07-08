@@ -9,6 +9,36 @@ class LoginScreen extends StatelessWidget {
     final TextEditingController idController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
 
+    void _tryLogin() {
+      final id = idController.text.trim();
+      final pw = passwordController.text.trim();
+
+      if (id == 'abcd' && pw == '1234') {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+        );
+      } else {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text('로그인 실패'),
+              content: const Text('아이디와 패스워드가 일치하지 않습니다.'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(); // 팝업 닫기
+                  },
+                  child: const Text('확인'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(title: const Text('로그인')),
       body: Padding(
@@ -27,12 +57,7 @@ class LoginScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             ElevatedButton(
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()),
-                );
-              },
+              onPressed: _tryLogin,
               child: const Text('로그인'),
             ),
             TextButton(
