@@ -41,6 +41,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
+<<<<<<< HEAD
     apiKey: 'AIzaSyAzXKyRt26HeFE3-1Xv82MaLCn4z4WUJbs',
     appId: '1:934546357699:web:ed4ca3cf6f236a9ab49176',
     messagingSenderId: '934546357699',
@@ -64,19 +65,53 @@ class DefaultFirebaseOptions {
     messagingSenderId: '934546357699',
     projectId: 'firefeed-6f020',
     storageBucket: 'firefeed-6f020.firebasestorage.app',
+=======
+    apiKey: 'AIzaSyC_9l1sQCNxIazwXmV8GszMlW10nbw_KkE',
+    appId: '1:949357791683:web:0ebc73533e379642735576',
+    messagingSenderId: '949357791683',
+    projectId: 'fire-feed-app-2ee1a',
+    authDomain: 'fire-feed-app-2ee1a.firebaseapp.com',
+    storageBucket: 'fire-feed-app-2ee1a.firebasestorage.app',
+    measurementId: 'G-LCNDTHD0BR',
+  );
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyByNCiGElHmH3ficoPvzOl_ZhRNBRdbuBY',
+    appId: '1:949357791683:android:1fd3ab6043e9d763735576',
+    messagingSenderId: '949357791683',
+    projectId: 'fire-feed-app-2ee1a',
+    storageBucket: 'fire-feed-app-2ee1a.firebasestorage.app',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyCR_YrW3AB_N9zPFIBG23wHJcM9byXXdm8',
+    appId: '1:949357791683:ios:50dd9ba7eb5cfc9a735576',
+    messagingSenderId: '949357791683',
+    projectId: 'fire-feed-app-2ee1a',
+    storageBucket: 'fire-feed-app-2ee1a.firebasestorage.app',
+>>>>>>> sub
     iosBundleId: 'com.example.fireFeedApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
+<<<<<<< HEAD
     apiKey: 'AIzaSyC4u-6MifzPF8SnIhLoZ6NE3bJhtGx33Sc',
     appId: '1:934546357699:ios:7ea149e0a98fe274b49176',
     messagingSenderId: '934546357699',
     projectId: 'firefeed-6f020',
     storageBucket: 'firefeed-6f020.firebasestorage.app',
+=======
+    apiKey: 'AIzaSyCR_YrW3AB_N9zPFIBG23wHJcM9byXXdm8',
+    appId: '1:949357791683:ios:50dd9ba7eb5cfc9a735576',
+    messagingSenderId: '949357791683',
+    projectId: 'fire-feed-app-2ee1a',
+    storageBucket: 'fire-feed-app-2ee1a.firebasestorage.app',
+>>>>>>> sub
     iosBundleId: 'com.example.fireFeedApp',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
+<<<<<<< HEAD
     apiKey: 'AIzaSyAzXKyRt26HeFE3-1Xv82MaLCn4z4WUJbs',
     appId: '1:934546357699:web:f84f4434f007eaa1b49176',
     messagingSenderId: '934546357699',
@@ -87,3 +122,14 @@ class DefaultFirebaseOptions {
   );
 
 }
+=======
+    apiKey: 'AIzaSyC_9l1sQCNxIazwXmV8GszMlW10nbw_KkE',
+    appId: '1:949357791683:web:9706b122e973250a735576',
+    messagingSenderId: '949357791683',
+    projectId: 'fire-feed-app-2ee1a',
+    authDomain: 'fire-feed-app-2ee1a.firebaseapp.com',
+    storageBucket: 'fire-feed-app-2ee1a.firebasestorage.app',
+    measurementId: 'G-1GVSXBN1HD',
+  );
+}
+>>>>>>> sub

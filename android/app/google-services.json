@@ -1,13 +1,23 @@
 {
   "project_info": {
+<<<<<<< HEAD
     "project_number": "934546357699",
     "project_id": "firefeed-6f020",
     "storage_bucket": "firefeed-6f020.firebasestorage.app"
+=======
+    "project_number": "949357791683",
+    "project_id": "fire-feed-app-2ee1a",
+    "storage_bucket": "fire-feed-app-2ee1a.firebasestorage.app"
+>>>>>>> sub
   },
   "client": [
     {
       "client_info": {
+<<<<<<< HEAD
         "mobilesdk_app_id": "1:934546357699:android:c81bcd645b1b90afb49176",
+=======
+        "mobilesdk_app_id": "1:949357791683:android:1fd3ab6043e9d763735576",
+>>>>>>> sub
         "android_client_info": {
           "package_name": "com.example.fire_feed_app"
         }
@@ -15,7 +25,11 @@
       "oauth_client": [],
       "api_key": [
         {
+<<<<<<< HEAD
           "current_key": "AIzaSyBjGmEtamTSTE0oXAsLIq9FpVicEm5uyOg"
+=======
+          "current_key": "AIzaSyByNCiGElHmH3ficoPvzOl_ZhRNBRdbuBY"
+>>>>>>> sub
         }
       ],
       "services": {
