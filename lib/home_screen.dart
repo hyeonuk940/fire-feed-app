@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fire_feed_app/login_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -25,22 +26,45 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Fire Feed'),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
-      body: ListView.builder(
-        itemCount: feedItems.length,
-        itemBuilder: (context, index) {
-          final item = feedItems[index];
-          return Card(
-            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: ListTile(
-              title: Text(item['title']!),
-              subtitle: Text(item['subtitle']!),
-              leading: const Icon(Icons.local_fire_department, color: Colors.red),
-              onTap: () {
-                // 상세 화면으로 이동 예정
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: feedItems.length,
+              itemBuilder: (context, index) {
+                final item = feedItems[index];
+                return Card(
+                  margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: ListTile(
+                    title: Text(item['title']!),
+                    subtitle: Text(item['subtitle']!),
+                    leading: const Icon(Icons.local_fire_department, color: Colors.red),
+                    onTap: () {
+                      // 상세 화면으로 이동 예정
+                    },
+                  ),
+                );
               },
             ),
-          );
-        },
+          ),
+          const Divider(height: 1),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                icon: const Icon(Icons.login),
+                label: const Text('로그인'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const LoginScreen()),
+                  );
+                },
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
