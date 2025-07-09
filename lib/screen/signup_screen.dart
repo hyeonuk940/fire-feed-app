@@ -21,10 +21,15 @@ class _SignupScreenState extends State<SignupScreen> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<void> _signUp() async {
+    final email = _emailController.text.trim();
+    final password = _passwordController.text.trim();
+    final name = _nameController.text.trim();
+    final ageText = _ageController.text.trim();
+
     try {
       UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim(),
+        email: email,
+        password: password,
       );
 
       User? user = userCredential.user;
@@ -32,15 +37,14 @@ class _SignupScreenState extends State<SignupScreen> {
       if (user != null) {
         final appUser = AppUser(
           uid: user.uid,
-          emailID: _emailController.text.trim(),
-          name: _nameController.text.trim(),
-          age: int.parse(_ageController.text.trim()),
+          emailID: email,
+          name: name,
+          age: int.parse(ageText),
           joinDate: DateTime.now(),
         );
 
         await _firestore.collection('users').doc(user.uid).set(appUser.toJson());
 
-        // 나머지 AlertDialog 띄우고 로그인 화면 이동 코드 유지
         if (context.mounted) {
           showDialog(
             context: context,
