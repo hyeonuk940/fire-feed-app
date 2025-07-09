@@ -17,7 +17,7 @@
 flutter doctor -v  # Flutter 환경 점검
 ```
 
-※ iOS는 지원하지 않으므로 CocoaPods 설치는 생략함.
+※ iOS 개발은 진행하지 않으므로 CocoaPods 설치는 생략함.
 
 ---
 
