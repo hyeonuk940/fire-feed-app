@@ -27,6 +27,8 @@ Flutter + Firebase 설정은 다음 링크 참조
 
 https://github.com/Hoeng317/fire_feed_server?tab=readme-ov-file#-flutter-cli%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-firebase-%EC%97%B0%EB%8F%99-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC
 
+---
+
 
 ### ✅ 기본 폴더 구조 생성
 
