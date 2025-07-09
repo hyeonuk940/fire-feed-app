@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fire_feed_app/screen/home_screen.dart'; // HomeScreen import
+import 'package:fire_feed_app/screen/signup_screen.dart'; // SignupScreen import
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -70,8 +71,13 @@ class LoginScreen extends StatelessWidget {
               child: const Text('로그인'),
             ),
             TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-                child: const Text('확인'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SignupScreen()),
+                );
+              },
+              child: const Text('회원가입'),
             ),
           ],
         ),
