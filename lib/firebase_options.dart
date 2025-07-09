@@ -41,31 +41,6 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-<<<<<<< HEAD
-    apiKey: 'AIzaSyAzXKyRt26HeFE3-1Xv82MaLCn4z4WUJbs',
-    appId: '1:934546357699:web:ed4ca3cf6f236a9ab49176',
-    messagingSenderId: '934546357699',
-    projectId: 'firefeed-6f020',
-    authDomain: 'firefeed-6f020.firebaseapp.com',
-    storageBucket: 'firefeed-6f020.firebasestorage.app',
-    measurementId: 'G-L5CLVFDS0F',
-  );
-
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBjGmEtamTSTE0oXAsLIq9FpVicEm5uyOg',
-    appId: '1:934546357699:android:c81bcd645b1b90afb49176',
-    messagingSenderId: '934546357699',
-    projectId: 'firefeed-6f020',
-    storageBucket: 'firefeed-6f020.firebasestorage.app',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC4u-6MifzPF8SnIhLoZ6NE3bJhtGx33Sc',
-    appId: '1:934546357699:ios:7ea149e0a98fe274b49176',
-    messagingSenderId: '934546357699',
-    projectId: 'firefeed-6f020',
-    storageBucket: 'firefeed-6f020.firebasestorage.app',
-=======
     apiKey: 'AIzaSyC_9l1sQCNxIazwXmV8GszMlW10nbw_KkE',
     appId: '1:949357791683:web:0ebc73533e379642735576',
     messagingSenderId: '949357791683',
@@ -89,40 +64,19 @@ class DefaultFirebaseOptions {
     messagingSenderId: '949357791683',
     projectId: 'fire-feed-app-2ee1a',
     storageBucket: 'fire-feed-app-2ee1a.firebasestorage.app',
->>>>>>> sub
     iosBundleId: 'com.example.fireFeedApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-<<<<<<< HEAD
-    apiKey: 'AIzaSyC4u-6MifzPF8SnIhLoZ6NE3bJhtGx33Sc',
-    appId: '1:934546357699:ios:7ea149e0a98fe274b49176',
-    messagingSenderId: '934546357699',
-    projectId: 'firefeed-6f020',
-    storageBucket: 'firefeed-6f020.firebasestorage.app',
-=======
     apiKey: 'AIzaSyCR_YrW3AB_N9zPFIBG23wHJcM9byXXdm8',
     appId: '1:949357791683:ios:50dd9ba7eb5cfc9a735576',
     messagingSenderId: '949357791683',
     projectId: 'fire-feed-app-2ee1a',
     storageBucket: 'fire-feed-app-2ee1a.firebasestorage.app',
->>>>>>> sub
     iosBundleId: 'com.example.fireFeedApp',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-<<<<<<< HEAD
-    apiKey: 'AIzaSyAzXKyRt26HeFE3-1Xv82MaLCn4z4WUJbs',
-    appId: '1:934546357699:web:f84f4434f007eaa1b49176',
-    messagingSenderId: '934546357699',
-    projectId: 'firefeed-6f020',
-    authDomain: 'firefeed-6f020.firebaseapp.com',
-    storageBucket: 'firefeed-6f020.firebasestorage.app',
-    measurementId: 'G-SMSHETG9FV',
-  );
-
-}
-=======
     apiKey: 'AIzaSyC_9l1sQCNxIazwXmV8GszMlW10nbw_KkE',
     appId: '1:949357791683:web:9706b122e973250a735576',
     messagingSenderId: '949357791683',
@@ -132,4 +86,3 @@ class DefaultFirebaseOptions {
     measurementId: 'G-1GVSXBN1HD',
   );
 }
->>>>>>> sub

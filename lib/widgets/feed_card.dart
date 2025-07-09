@@ -8,7 +8,7 @@ class FeedCard extends StatelessWidget {
   const FeedCard({super.key, required this.feed});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {             //ui 구성 함수/ feed card를 리턴
     return Card(
       margin: const EdgeInsets.all(10.0),
       child: Padding(
