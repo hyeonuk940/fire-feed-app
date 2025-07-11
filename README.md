@@ -209,26 +209,25 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 ### 3. 모델 생성 (`models/feed.dart`)
 
 ```dart
-class Feed {
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+class Feed {                                       //제목, 이미지, 텍스트, 시간 구성
   final String title;
   final String content;
   final String imageUrl;
-  final DateTime datetime;
+  final Timestamp createdAt;
 
   Feed({
     required this.title,
     required this.content,
     required this.imageUrl,
-    required this.datetime,
+    required this.createdAt,
   });
 
-  factory Feed.fromMap(Map<String, dynamic> data) {
-    return Feed(
-      title: data['title'] ?? '',
-      content: data['content'] ?? '',
-      imageUrl: data['imageUrl'] ?? '',
-      datetime: (data['datetime'] as Timestamp).toDate(),
-    );
+  factory Feed.fromFirestore(DocumentSnapshot doc) {   //Firestore 문서로 부터 Feed 클래스 생성
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+    return Feed(title: data['title'] ?? '', content: data['content'] ?? '', imageUrl: data['imageUrl'],
+    createdAt: data['createdAt'] ?? Timestamp.now(),);
   }
 }
 ```
@@ -282,9 +281,9 @@ class FeedCard extends StatelessWidget {
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/feed.dart';
 import '../widgets/feed_card.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -292,20 +291,39 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('피드')),
+      appBar: AppBar(
+        title: const Text('Fire Feed'),        //상단 타이틀
+      ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection('feeds').orderBy('datetime', descending: true).snapshots(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
+        stream: FirebaseFirestore.instance
+            .collection('feeds')
+            .orderBy('createdAt', descending: true)    //피드 최신순 정렬
+            .snapshots(),                //실시간 스트림 데이터 제공
+        builder: (context, snapshot){     //스트림 변경시 호출되어 업데이트
+          if (snapshot.connectionState == ConnectionState.waiting){
             return const Center(child: CircularProgressIndicator());
           }
-          final feeds = snapshot.data!.docs.map((doc) => Feed.fromMap(doc.data() as Map<String, dynamic>)).toList();
-          return ListView.builder(
+          if (snapshot.hasError){
+            return Center(child: Text('Error:${snapshot.error}'));
+          }
+          if(!snapshot.hasData || snapshot.data !.docs.isEmpty){
+            return const Center(child: Text('No feeds available.'));
+          }
+
+          final feeds = snapshot.data!.docs
+              .map((doc) => Feed.fromFirestore(doc))//Firestore에서 받은 DocumentSnapshot 리스트를 Dart 객체로 변환
+              .toList();
+
+          return ListView.builder(          //피드 수 만큼 렌더링
             itemCount: feeds.length,
-            itemBuilder: (context, index) => FeedCard(feed: feeds[index]),
+            itemBuilder: (context,index){
+              final feed = feeds[index];
+
+              return FeedCard(feed: feed);    //각 피드 항목
+            },
           );
-        },
-      ),
+        }
+      )
     );
   }
 }
