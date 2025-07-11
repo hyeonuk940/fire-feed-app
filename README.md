@@ -7,8 +7,9 @@
 ## 🔹 1. 프로젝트 초기 세팅
 
 ### ✅ Flutter 프로젝트 생성
-
-1. Android Studio 실행 → `New Flutter Project` 선택
+1. Android Studio 설정화면의 plugins 에서 Flutter 설치
+2. 설정화면의 Android SDK의 SDK Tools 에서 Android SDK Command-line Tools (latest), Android SDK Platform-Tools 체크 후 Apply  
+1. Android Studio 실행 → `New Flutter Project` 선택 -> Generators : Flutter
 2. Project name 입력 (예: fire_feed_app)
 3. Platforms에서 Android만 체크 → Create
 4. 경로 선택 후 Finish
@@ -177,125 +178,7 @@ void _tryLogin() {
 }
 ```
 
----
 
-## 🔹 4. Firestore 연동 및 Feed 구성
-
-### ✅ Firestore 패키지 설치
-
-```bash
-flutter pub add cloud_firestore
-```
-
-### ✅ 모델 정의: `models/feed.dart`
-
-```dart
-class Feed {
-  final String title;
-  final String content;
-  final String imageUrl;
-  final DateTime date;
-
-  Feed({
-    required this.title,
-    required this.content,
-    required this.imageUrl,
-    required this.date,
-  });
-
-  factory Feed.fromJson(Map<String, dynamic> json) {
-    return Feed(
-      title: json['title'],
-      content: json['content'],
-      imageUrl: json['imageUrl'],
-      date: (json['date'] as Timestamp).toDate(),
-    );
-  }
-}
-```
-
----
-
-### ✅ 위젯 정의: `widgets/feed_card.dart`
-
-```dart
-import 'package:flutter/material.dart';
-import '../models/feed.dart';
-
-class FeedCard extends StatelessWidget {
-  final Feed feed;
-
-  const FeedCard({super.key, required this.feed});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        children: [
-          Image.network(feed.imageUrl),
-          Text(feed.title, style: const TextStyle(fontWeight: FontWeight.bold)),
-          Text(feed.content),
-        ],
-      ),
-    );
-  }
-}
-```
-
----
-
-### ✅ 화면 구성: `screens/home_screen.dart`
-
-```dart
-import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import '../models/feed.dart';
-import '../widgets/feed_card.dart';
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('피드')),
-      body: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection('feeds').snapshots(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) return const CircularProgressIndicator();
-          final docs = snapshot.data!.docs;
-
-          final feeds = docs.map((doc) =>
-            Feed.fromJson(doc.data() as Map<String, dynamic>)).toList();
-
-          return ListView.builder(
-            itemCount: feeds.length,
-            itemBuilder: (context, index) {
-              return FeedCard(feed: feeds[index]);
-            },
-          );
-        },
-      ),
-    );
-  }
-}
-```
-
----
-
-## 📁 프로젝트 구조 예시
-
-```text
-/lib
-  ├── models
-  │   └── feed.dart
-  ├── screens
-  │   └── home_screen.dart
-  ├── widgets
-  │   └── feed_card.dart
-  ├── firebase_options.dart
-  └── main.dart
-```
 
 ---
 
@@ -426,5 +309,18 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+```
+## 📁 프로젝트 구조 예시
+
+```text
+/lib
+  ├── models
+  │   └── feed.dart
+  ├── screens
+  │   └── home_screen.dart
+  ├── widgets
+  │   └── feed_card.dart
+  ├── firebase_options.dart
+  └── main.dart
 ```
 
