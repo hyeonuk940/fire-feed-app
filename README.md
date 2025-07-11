@@ -95,7 +95,7 @@ void main() {
 npm install -g firebase-tools
 firebase login
 flutter pub global activate flutterfire_cli
-export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH="$PATH":"$HOME/.pub-cache/bin" #환경변수 추가
 flutterfire configure
 ```
 
@@ -103,6 +103,11 @@ flutterfire configure
 
 ```bash
 flutter pub add firebase_core
+
+#flutter pub add [원하는 서비스] -> 해당 파일 자동 빌드 -> 임포트 후 사용
+#import 'package:[이름]/[이름].dart
+#예) flutter pub add cloud_firestore    import 'package:cloud_firestore/cloud_firestore.dart';
+
 ```
 
 `main.dart` 업데이트:
